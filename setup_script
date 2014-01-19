@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu
-git clone https://github.com/gwwerner/cs462.git
-chmod 755 cs462/setup_script
-./cs462/setup_script
+# My first script
+
+echo "Hello World!"
