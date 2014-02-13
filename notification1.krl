@@ -21,7 +21,7 @@ ruleset notification1 {
             pageQuery = page:url("query");
         }
         // Display notification that will not fade.
-        if (pageQuery == "") then {
+        if (pageQuery eq "") then {
             notify("Hello Monkey", pageQuery) with sticky = true;
         }
     }
@@ -31,7 +31,7 @@ ruleset notification1 {
             pageQuery = page:url("query");
         }
         // Display notification that will not fade.
-        if (pageQuery != "") then {
+        if (pageQuery neq "") then {
             notify("Hello " + pageQuery, "") with sticky = true;
         }
     }
