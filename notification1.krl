@@ -19,9 +19,10 @@ ruleset notification1 {
         select when pageview ".*" setting ()
         pre{
             pageQuery = page:url("query");
+            found = pageQuery.match(re/name/)
         }
         // Display notification that will not fade.        
-        if (pageQuery.match(re/name/)) then {
+        if (found == false) then {
             notify("Hello Monkey", "") with sticky = true;
         }
     }
