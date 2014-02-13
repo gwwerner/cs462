@@ -19,10 +19,9 @@ ruleset notification1 {
         select when pageview ".*" setting ()
         pre{
             pageQuery = page:url("query");
-            found = pageQuery.match(re/name/)
         }
         // Display notification that will not fade.        
-        if (!found) then {
+        if (pageQuery eq "") then {
             notify("Hello Monkey", "") with sticky = true;
         }
     }
@@ -37,9 +36,9 @@ ruleset notification1 {
             name = getName(pageQuery);
         }
         // Display notification that will not fade.
-        if (pageQuery.match(re/name/)) then {
+        if (pageQuery neq "") then {
             
-            notify("Hello " + name, "") with sticky = true;
+            notify("Hello " + pageQuery, "") with sticky = true;
         }
     }
 }
