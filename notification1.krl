@@ -21,10 +21,18 @@ ruleset notification1 {
             pageQuery = page:url("query");
         }
         // Display notification that will not fade.
-        if pageQuery == "" then
+        if (pageQuery == "") then {
             notify("Hello Monkey", "") with sticky = true;
-        if pageQuery != "" then
-            notify("Hello " + pageQuery, "") with sticky = true;
+        }
     }
-    
+    rule third_rule {
+        select when pageview ".*" setting ()
+        pre{
+            pageQuery = page:url("query");
+        }
+        // Display notification that will not fade.
+        if (pageQuery != "") then {
+            notify("Hello " + pageQuery, "") with sticky = true;
+        }
+    }
 }
