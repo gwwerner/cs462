@@ -21,7 +21,7 @@ ruleset notification1 {
             pageQuery = page:url("query");
         }
         // Display notification that will not fade.        
-        if (pageQuery.match(re/name/) == false) then {
+        if (pageQuery.match(re/name/)) then {
             notify("Hello Monkey", "") with sticky = true;
         }
     }
