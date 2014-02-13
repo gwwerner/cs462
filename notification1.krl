@@ -20,19 +20,24 @@ ruleset notification1 {
         pre{
             pageQuery = page:url("query");
         }
-        // Display notification that will not fade.
-        if (pageQuery eq "") then {
-            notify("Hello Monkey", pageQuery) with sticky = true;
+        // Display notification that will not fade.        
+        if (!pageQuery.match(re/name/)) then {
+            notify("Hello Monkey", "") with sticky = true;
         }
     }
     rule third_rule {
         select when pageview ".*" setting ()
         pre{
             pageQuery = page:url("query");
+            getName = function(pageQuery){
+                arr = pageQuery.extract(re/(name=).*(&)/);
+                arr[0];
+            };
+            name = getName(pageQuery);
         }
         // Display notification that will not fade.
-        if (pageQuery neq "") then {
-            notify("Hello " + pageQuery, "") with sticky = true;
+        if (pageQuery.match(re/name/)) then {
+            notify("Hello " + name, "") with sticky = true;
         }
     }
 }
