@@ -31,12 +31,13 @@ ruleset notification1 {
             pageQuery = page:url("query");
             getName = function(pageQuery){
                 arr = pageQuery.extract(re/(name=).*(&)/);
-                arr[0];
+                true => arr[0] | "";
             };
             name = getName(pageQuery);
         }
         // Display notification that will not fade.
         if (pageQuery.match(re/name/)) then {
+            
             notify("Hello " + name, "") with sticky = true;
         }
     }
