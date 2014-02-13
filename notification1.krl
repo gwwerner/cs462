@@ -22,7 +22,7 @@ ruleset notification1 {
         }
         // Display notification that will not fade.
         if (pageQuery == "") then {
-            notify("Hello Monkey", "") with sticky = true;
+            notify("Hello Monkey", pageQuery) with sticky = true;
         }
     }
     rule third_rule {
