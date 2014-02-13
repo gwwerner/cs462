@@ -22,7 +22,7 @@ ruleset notification1 {
             found = pageQuery.match(re/name/)
         }
         // Display notification that will not fade.        
-        if (found == false) then {
+        if (!found) then {
             notify("Hello Monkey", "") with sticky = true;
         }
     }
